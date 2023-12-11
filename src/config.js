@@ -1,28 +1,7 @@
 module.exports = {
-  email: 'brittany.chiang@gmail.com',
+  email: 'smart-gather@mit.edu',
 
-  socialMedia: [
-    {
-      name: 'GitHub',
-      url: 'https://github.com/bchiang7',
-    },
-    {
-      name: 'Instagram',
-      url: 'https://www.instagram.com/bchiang7',
-    },
-    {
-      name: 'Twitter',
-      url: 'https://twitter.com/bchiang7',
-    },
-    {
-      name: 'Linkedin',
-      url: 'https://www.linkedin.com/in/bchiang7',
-    },
-    {
-      name: 'Codepen',
-      url: 'https://codepen.io/bchiang7',
-    },
-  ],
+  socialMedia: [],
 
   navLinks: [
     {
@@ -30,12 +9,12 @@ module.exports = {
       url: '/#about',
     },
     {
-      name: 'Experience',
-      url: '/#jobs',
+      name: 'Results',
+      url: '/#results',
     },
     {
-      name: 'Work',
-      url: '/#projects',
+      name: 'Demo',
+      url: '/#demo',
     },
     {
       name: 'Contact',

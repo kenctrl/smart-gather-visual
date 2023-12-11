@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 import styled from 'styled-components';
@@ -13,6 +13,46 @@ const StyledProjectsGrid = styled.ul`
   a {
     position: relative;
     z-index: 1;
+  }
+`;
+
+const StyledCode = styled.button`
+  ${({ theme }) => theme.mixins.link};
+  background-color: transparent;
+  font-family: var(--font-mono);
+  font-size: var(--fz-xs);
+`;
+
+const StyledTabButton = styled.button`
+  ${({ theme }) => theme.mixins.link};
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: var(--tab-height);
+  padding: 0 20px 2px;
+  border-left: 2px solid var(--lightest-navy);
+  background-color: transparent;
+  color: ${({ isActive }) => (isActive ? 'var(--green)' : 'var(--slate)')};
+  font-family: var(--font-mono);
+  font-size: var(--fz-xs);
+  text-align: left;
+  white-space: nowrap;
+
+  @media (max-width: 768px) {
+    padding: 0 15px 2px;
+  }
+  @media (max-width: 600px) {
+    ${({ theme }) => theme.mixins.flexCenter};
+    min-width: 120px;
+    padding: 0 15px;
+    border-left: 0;
+    border-bottom: 2px solid var(--lightest-navy);
+    text-align: center;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: var(--light-navy);
   }
 `;
 
@@ -335,6 +375,7 @@ const Featured = () => {
   const revealTitle = useRef(null);
   const revealProjects = useRef([]);
   const prefersReducedMotion = usePrefersReducedMotion();
+  const [showPythonOutput, setShowPythonOutput] = useState(false);
 
   useEffect(() => {
     if (prefersReducedMotion) {
@@ -348,10 +389,36 @@ const Featured = () => {
   return (
     <section id="projects">
       <h2 className="numbered-heading" ref={revealTitle}>
-        Some Things I’ve Built
+        Demo
       </h2>
 
-      <StyledProjectsGrid>
+      <StyledTabButton
+        // key={i}
+        isActive={true}
+        onClick={() => {setShowPythonOutput(!showPythonOutput)}}
+        // ref={el => (tabs.current[i] = el)}
+        // id={`tab-${i}`}
+        role="tab"
+        // tabIndex={activeTabId === i ? '0' : '-1'}
+        aria-selected={true}
+        // aria-controls={`panel-${i}`}
+        >
+        <span>{"See how Smart Gather can accelerate your efficiency and product quality."}</span>
+        <br/>
+      </StyledTabButton>
+      {showPythonOutput ? (
+          <StyledCode>
+            <br/>
+            <p>
+              {/* <code>
+                {"$ python3 main.py"}
+              </code>*/}
+            Live demo is coming soon! In the meantime, check out the code on <a href="https://github.com/kenctrl/smart-gather">GitHub</a>.
+            </p>
+          </StyledCode>
+        ) : null}
+
+      {/* <StyledProjectsGrid>
         {featuredProjects &&
           featuredProjects.map(({ node }, i) => {
             const { frontmatter, html } = node;
@@ -409,7 +476,7 @@ const Featured = () => {
               </StyledProject>
             );
           })}
-      </StyledProjectsGrid>
+      </StyledProjectsGrid> */}
     </section>
   );
 };

@@ -66,6 +66,35 @@ const StyledTabList = styled.div`
   }
 `;
 
+const StyledText = styled.div`
+  ul.skills-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(140px, 200px));
+    grid-gap: 0 10px;
+    padding: 0;
+    margin: 20px 0 0 0;
+    overflow: hidden;
+    list-style: none;
+
+    li {
+      position: relative;
+      margin-bottom: 10px;
+      padding-left: 20px;
+      font-family: var(--font-mono);
+      font-size: var(--fz-xs);
+
+      &:before {
+        content: '▹';
+        position: absolute;
+        left: 0;
+        color: var(--green);
+        font-size: var(--fz-sm);
+        line-height: 12px;
+      }
+    }
+  }
+`;
+
 const StyledTabButton = styled.button`
   ${({ theme }) => theme.mixins.link};
   display: flex;
@@ -244,10 +273,10 @@ const Jobs = () => {
 
   return (
     <StyledJobsSection id="jobs" ref={revealContainer}>
-      <h2 className="numbered-heading">Where I’ve Worked</h2>
+      <h2 className="numbered-heading">Experimental Results</h2>
 
       <div className="inner">
-        <StyledTabList role="tablist" aria-label="Job tabs" onKeyDown={e => onKeyDown(e)}>
+        {/* <StyledTabList role="tablist" aria-label="Job tabs" onKeyDown={e => onKeyDown(e)}>
           {jobsData &&
             jobsData.map(({ node }, i) => {
               const { company } = node.frontmatter;
@@ -267,9 +296,9 @@ const Jobs = () => {
               );
             })}
           <StyledHighlight activeTabId={activeTabId} />
-        </StyledTabList>
+        </StyledTabList> */}
 
-        <StyledTabPanels>
+        {/* <StyledTabPanels>
           {jobsData &&
             jobsData.map(({ node }, i) => {
               const { frontmatter, html } = node;
@@ -301,7 +330,15 @@ const Jobs = () => {
                 </CSSTransition>
               );
             })}
-        </StyledTabPanels>
+        </StyledTabPanels> */}
+
+        <StyledText>
+          <div>
+            <p>
+            INSERT HERE
+            </p>
+          </div>
+        </StyledText>
       </div>
     </StyledJobsSection>
   );
